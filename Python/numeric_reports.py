@@ -2,39 +2,37 @@
 Guess the number
 
 Problem Statement: 
-Write a function (guessing_game) that takes no arguments.
-When run, the function chooses a random integer between 0 and 100 (inclusive).
-Then ask the user to guess what number has been chosen.
-Each time the user enters a guess, the program indicates one of the following:
-Too high
-Too low
-Just right
-If the user guesses correctly, the program exits. Otherwise, the user is asked to try again.
-The program only exits after the user guesses correctly.
+Write a function (run_timing) that asks how long it took for you to run 10 km. 
+The function continues to ask how long (in minutes) it took for additional runs, until the user presses Enter. 
+At that point, the function exits--but only after calculating and displaying the average time that the 10 km runs took.
 
 '''
-import random
 
-def guessing_game():
-    number = random.randint(1,100)
-    
+
+def run_timing():
+    runs = []   
 
     while(True):
-        user_input = int(input('Guess the number: '))50
-        if user_input == number:
-            print('you guessed it right')
-            break
-        elif user_input <= number + 10 and user_input >= number - 10:
-            print("you guessed just the right number")
-        elif user_input > number + 10:
-            print('Too High , Try again')
-        else:
-            print('Too low, try again')
+        try:
+            user_input = float(input('Enter 10 Km run time: '))
+            runs.append(user_input)
+            user_input = 0
+        except ValueError as e:
+            print(f'This is not a valid number{user_input}.')
+            if user_input == 0:
+                break           
+
+    list_len = len(runs)
+    avg = sum(runs)/list_len
+
+    return f'Average of {avg}, over {list_len} runs'
+
+
 
 
 
 if __name__ == '__main__':
-    guessing_game()
+    print(run_timing())
 
 
 #**************************************************************************

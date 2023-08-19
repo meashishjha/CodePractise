@@ -2,39 +2,28 @@
 Guess the number
 
 Problem Statement: 
-Write a function (guessing_game) that takes no arguments.
-When run, the function chooses a random integer between 0 and 100 (inclusive).
-Then ask the user to guess what number has been chosen.
-Each time the user enters a guess, the program indicates one of the following:
-Too high
-Too low
-Just right
-If the user guesses correctly, the program exits. Otherwise, the user is asked to try again.
-The program only exits after the user guesses correctly.
+The challenge here is to write a mysum function that does the same thing as the built-in sum function. 
+However, instead of taking a single sequence as a parameter, it should take a variable number of arguments. 
+Thus, although you might invoke sum([1,2,3]), you’d instead invoke mysum(1,2,3) or mysum(10,20,30,40,50).
 
 '''
-import random
 
-def guessing_game():
-    number = random.randint(1,100)
-    
 
-    while(True):
-        user_input = int(input('Guess the number: '))50
-        if user_input == number:
-            print('you guessed it right')
-            break
-        elif user_input <= number + 10 and user_input >= number - 10:
-            print("you guessed just the right number")
-        elif user_input > number + 10:
-            print('Too High , Try again')
-        else:
-            print('Too low, try again')
+def mysum(*args):
+    totalsum = 0
+    for i in args:
+        totalsum += i
+
+    return totalsum
+
+   
+
 
 
 
 if __name__ == '__main__':
-    guessing_game()
+    print(mysum(10,20,3,4,5))
+    print(sum([1,2,3],6))
 
 
 #**************************************************************************
