@@ -10,9 +10,24 @@ Just right
 If the user guesses correctly, the program exits. Otherwise, the user is asked to try again.
 The program only exits after the user guesses correctly.
 '''
+import random
 
-fruits = ['apple', 'banana', 'cherry']
-colors = ['red', 'yellow', 'black']
-combined = zip(fruits, colors)
-for i in combined:
-    print(i)
+def guessing_game():
+    number = random.randint(0, 100)
+
+    while True:
+        input_number = int(input("Enter your guess number from 0-100\n"))
+        if input_number == number:
+            print(f"you guessed it right! The number is {number}")
+            break
+        elif input_number >= 0 and input_number < (number - 5):
+            print("too less, try again please!")
+        elif input_number >= (number - 5) and input_number <= (number + 5):
+            print("Almost in the range!")
+        elif input_number > (number+5) and input_number <=100:
+            print("too high, try again!")
+
+
+
+if __name__ == "__main__":
+    guessing_game()
